@@ -1,0 +1,11 @@
+<h1>Add Message</h1>
+
+<%= form_for @message do |f| %>
+  <%= f.label :to %>
+  <%= f.text_field :to %><br>
+  <%= f.label :from %>
+  <%= f.text_field :from %><br>
+  <%= f.label :body %>
+  <%= f.text_area :body %><br>
+  <%= f.submit class: "btn btn-sm btn-info" %>
+<% end %>
