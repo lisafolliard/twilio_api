@@ -12,6 +12,7 @@ gem 'hirb'
 gem 'textacular', '~> 3.0'
 gem 'devise'
 gem 'paperclip', '~> 4.1'
+gem 'rest-client'
 
 group :development do
   gem 'byebug'
