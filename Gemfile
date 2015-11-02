@@ -25,6 +25,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -35,4 +36,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
