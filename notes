@@ -1,0 +1,38 @@
+RestClient.post 'http://example.com/resource', :param1 => 'one', :nested => { :param2 => 'two' }
+
+RestClient.post(
+'https://ACca8b73ec6837965bc7ac1e55d84d283e:97d96926a89c62e320e6b2963287165d@api.twilio.com/2010-04-01/Accounts/ACca8b73ec6837965bc7ac1e55d84d283e/Messages.json',
+  :Body => 'Hi Lisa, This is creepy programmer robot out to get you!!',
+  :From => '4152149646',
+  :To => '4155965967')
+
+response = RestClient::Request.new(
+  :method => :post,
+  :url => 'https://api.twilio.com/2010-04-01/Accounts/ACca8b73ec6837965bc7ac1e55d84d283e/Messages.json',
+  :user => 'ACca8b73ec6837965bc7ac1e55d84d283e',
+  :password => '97d96926a89c62e320e6b2963287165d',
+  :payload => { :Body => "Howdy World",
+                :From => '4152149646',
+                :To => '4155965967' }
+).execute
+
+class Message
+  def initialize(attributes)
+    @to = attributes['to']
+    @from = attributes['from']
+    @body = attributes['body']
+    @status = attributes['status']
+  end
+end
+
+
+response = RestClient::Request.new(
+  :method => :get,
+  :url => 'https://api.twilio.com/2010-04-01/Accounts/ACca8b73ec6837965bc7ac1e55d84d283e/Messages.json',
+  :user => 'ACca8b73ec6837965bc7ac1e55d84d283e',
+  :password => '97d96926a89c62e320e6b2963287165d'
+).execute
+
+parsed_response = JSON.parse(response)
+messages_data = parsed_response['messages']
+messages = messages_data.map { |data| Message.new(data) }
